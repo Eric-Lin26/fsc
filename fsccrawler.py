@@ -5,7 +5,7 @@ import time
 def fsc():
     url = 'http://www.focus-sport.club.tw/forumdisplay.php?fid=670&page='
     i = 1 # 第幾頁
-    domain = 'http://www.focus-sport.club.tw/'
+    domain = 'http://www.focus-sport.club.tw/' # 主要網頁
 
     for page in range(5): # 爬5頁
         print('第', i,'頁')
@@ -19,7 +19,7 @@ def fsc():
         soup = BeautifulSoup(req.text, 'html5lib')
         titles = soup.find_all('a', class_="subject") # 搜尋a標籤, 屬性class_='subject'
         for title in titles:
-            purl = title.get('href')
+            purl = title.get('href') # 抓取網址
             print(title.text, '：', domain + purl)
             time.sleep(2)
         i += 1 # 換頁
